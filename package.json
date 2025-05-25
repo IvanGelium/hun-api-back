@@ -1,0 +1,37 @@
+{
+  "name": "hun-api-back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "prisma generate --sql && ts-node src/index.ts",
+    "build": "prisma generate --sql && tsc",
+    "start": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IvanGelium/hun-api-back.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IvanGelium/hun-api-back/issues"
+  },
+  "homepage": "https://github.com/IvanGelium/hun-api-back#readme",
+  "dependencies": {
+    "@prisma/client": "^6.8.2",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.18",
+    "@types/express": "^5.0.2",
+    "@types/helmet": "^0.0.48",
+    "@types/node": "^22.15.21",
+    "nodemon": "^3.1.10",
+    "prisma": "^6.8.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  }
+}
