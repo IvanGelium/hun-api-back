@@ -20,14 +20,26 @@
   "homepage": "https://github.com/IvanGelium/hun-api-back#readme",
   "dependencies": {
     "@prisma/client": "^6.8.2",
+    "axios": "^1.9.0",
+    "bcryptjs": "^3.0.2",
+    "colors": "^1.4.0",
     "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "dompurify": "^3.2.6",
+    "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "helmet": "^8.1.0"
+    "helmet": "^8.1.0",
+    "jest": "^29.7.0",
+    "jsdom": "^26.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.25.28"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/cors": "^2.8.18",
     "@types/express": "^5.0.2",
     "@types/helmet": "^0.0.48",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^22.15.21",
     "nodemon": "^3.1.10",
     "prisma": "^6.8.2",

@@ -4,7 +4,8 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["typedSql"]
-  output          = "../src/generated/prisma"
+  // output          = "../src/generated/prisma"
+  output          = "../../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -13,50 +14,51 @@ datasource db {
 }
 
 model User {
-  id        Int          @id @default(autoincrement())
-  name      String
-  email     String       @unique
-  password  String
-  role      Role         @default(USER)
-  createdAt DateTime     @default(now())
-  posts     Suggestion[]
-  comments  Comment[]
-  Profile   Profile?
-}
+  id Int @id @default(autoincrement())
 
-model Profile {
-  id     Int    @id @default(autoincrement())
-  bio    String
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int    @unique
+  email       String       @unique
+  password    String
+  first_name  String
+  middle_name String
+  last_name   String
+  role        Role         @default(USER)
+  created_at  DateTime     @default(now())
+  Updated_at  DateTime     @updatedAt
+  suggestions Suggestion[]
+  comments    Comment[]
 }
 
 model Suggestion {
-  id        Int               @id @default(autoincrement())
-  createdAt DateTime          @default(now())
-  updatedAt DateTime          @updatedAt
-  title     String
-  status    suggestion_status @default(RECIVED)
-  published Boolean           @default(false)
-  author    User              @relation(fields: [authorId], references: [id])
-  authorId  Int
-  Comment   Comment[]
+  id          Int               @id @default(autoincrement())
+  title       String
+  description String?
+  source      String?
+  status      suggestion_status @default(RECIVED)
+  author_id   Int?
+  author_name String?
+  gitlab_id   Int?
+  created_at  DateTime          @default(now())
+  updated_at  DateTime          @updatedAt
+  author      User?             @relation(fields: [author_id], references: [id])
+  comment     Comment[]
 }
 
 model Comment {
-  id        Int        @id @default(autoincrement())
-  text      String
-  post      Suggestion @relation(fields: [postId], references: [id])
-  postId    Int
-  author    User       @relation(fields: [authorId], references: [id])
-  authorId  Int
-  createdAt DateTime   @default(now())
+  id            Int        @id @default(autoincrement())
+  text          String
+  suggestion    Suggestion @relation(fields: [suggestion_id], references: [id])
+  suggestion_id Int
+  author        User       @relation(fields: [author_id], references: [id])
+  author_id     Int
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
 }
 
 enum Role {
   USER
   SALES
   SUPPORT
+  DEVELOPER
   ADMIN
 }
 

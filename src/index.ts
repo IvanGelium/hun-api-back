@@ -1,16 +1,18 @@
+// @ts-nocheck
 import express from 'express'
-import { PrismaClient } from './generated/prisma'
-
-const prisma = new PrismaClient()
+import userRouter from './routes/user.route'
+import authRouter from './routes/auth.route'
+import suggestionRouter from './routes/suggestion.route'
+const cors = require('cors')
+const router = express.Router()
 const app = express()
-const PORT = 3000
+const PORT = 4000
 
 app.use(express.json())
-
-app.get('/', async (req, res) => {
-  const users = await prisma.user.findMany()
-  res.send(users)
-})
+app.use(cors())
+app.use('/api/auth', authRouter)
+app.use('/api/user', userRouter)
+app.use('/api/suggestion', suggestionRouter)
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`)
