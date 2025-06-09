@@ -312,7 +312,7 @@ const defStatusGroup = {
   order: 9999,
   is_active: true,
   is_favorite: false,
-  status_ids: [],
+  // status_ids: [],
 }
 
 const defReason = {
@@ -403,8 +403,8 @@ const defApplicant = {
   //   status_id: 2,
   comment: defComment,
   //   admin_user_id: 41,
-  account_source_id:
-    'id источника добавления. Можно получить из запроса: /api/account_sources',
+  // account_source_id:
+  //   "id источника добавления. Можно получить из запроса: /api/account_sources",
   unidentified_info: 'unidentified_info_default',
   languages: defLanguages,
   has_vehicle: false,
@@ -438,27 +438,33 @@ const defSource = {
   logo: defImg,
 }
 
-// const defApplicantEvaluation = {
-//   criterions: [
-//     {
-//       criterion_id: 1,
-//       comment: 'comment_default',
-//       result: {
-//         criterion_type: 'pick_few',
-//         result: ['Подходит', 'Требует обучения'],
-//       },
-//     },
-//     {
-//       criterion_id: 2,
-//       comment: 'Добавлено резюме кандидата',
-//       result: {
-//         criterion_type: 'add_file',
-//         file: defImg
-//         file_name: 'resume.jpg',
-//       },
-//     },
-//   ],
-// }
+const defApplicantEvaluation = {
+  criterions: [
+    {
+      criterion_id: 1,
+      comment: 'comment_default',
+      result: {
+        criterion_type: 'pick_few',
+        result: ['Подходит', 'Требует обучения'],
+      },
+    },
+    {
+      criterion_id: 2,
+      comment: 'Добавлено резюме кандидата',
+      result: {
+        criterion_type: 'add_file',
+        file: defImg,
+        file_name: 'file_name_default',
+      },
+    },
+  ],
+}
+
+const defTag = {
+  name: 'name_default',
+  color: 'd7b100',
+  description: 'description_default',
+}
 
 //Сборнкики переменных
 
@@ -503,4 +509,6 @@ export {
   defColumn,
   defEvent,
   defSource,
+  defApplicantEvaluation,
+  defTag,
 }

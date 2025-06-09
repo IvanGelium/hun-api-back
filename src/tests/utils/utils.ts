@@ -1,5 +1,7 @@
 import axios from 'axios'
 import * as crypto from 'node:crypto'
+import querystring from 'querystring'
+
 require('dotenv').config()
 const API_BASE_URL = process.env.API_BASE_URL as string
 const API_STAGE_BASE_URL = process.env.API_STAGE_BASE_URL as string
@@ -16,6 +18,20 @@ class FetcherUtil {
   async get({ route, params = '' }) {
     return await axios.get(
       `${this.stage ? API_STAGE_BASE_URL : API_BASE_URL}/${route}/${params}`,
+      {
+        headers: {
+          accept: 'application/json',
+          'X-DCRT-HRM-AUTH': this.token,
+        },
+      }
+    )
+  }
+
+  async queryGet({ route, query }) {
+    return await axios.get(
+      `${
+        this.stage ? API_STAGE_BASE_URL : API_BASE_URL
+      }/${route}${querystring.stringify(query)}`,
       {
         headers: {
           accept: 'application/json',
